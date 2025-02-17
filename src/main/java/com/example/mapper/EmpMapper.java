@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.pojo.Emp;
+import com.example.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -23,5 +24,5 @@ public interface EmpMapper {
 //    public Long count();
 
 
-    List<Emp> selectPage(String name, Integer gender, LocalDate begin, LocalDate end);
+    List<Emp> selectPage(EmpQueryParam empQueryParam);
 }
