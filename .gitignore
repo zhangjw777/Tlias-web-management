@@ -6,7 +6,6 @@ target/
 
 #自定义忽略
 src/main/resources/application.yml
-
 ### STS ###
 .apt_generated
 .classpath

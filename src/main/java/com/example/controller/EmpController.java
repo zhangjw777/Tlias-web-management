@@ -38,9 +38,26 @@ public class EmpController {
 
     @PostMapping("/students")
     public Result add(@RequestBody Emp emp) {
+        log.info(emp.toString());
         empService.add(emp);
         return Result.success();
+    }
+    @DeleteMapping("/students")
+    public Result delete(@RequestParam List<Integer> ids){
+        log.info("批量删除部门: ids={} ", ids);
+        empService.deleteByIds(ids);
+        return Result.success();
+    }
+    @GetMapping("/students/{id}")
+    public Result queryEmpAllInfoById(@PathVariable Integer id){
+        Emp emp = empService.getEmpAllInfoById(id);
+        return Result.success(emp);
+    }
 
-
+    @PutMapping("/students")
+    public Result modifyEmpInfo(@RequestBody Emp emp){
+        log.info(emp.toString());
+        empService.saveEmpInfo(emp);
+        return Result.success();
     }
 }

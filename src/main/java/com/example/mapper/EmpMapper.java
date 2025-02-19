@@ -4,6 +4,7 @@ import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -27,4 +28,11 @@ public interface EmpMapper {
 
     @Options(useGeneratedKeys = true, keyProperty = "id") //主键返回，在插入后会将数据库主键自增的的值返回给Emp实体类
     void insert(Emp emp);
+
+    void deleteByIds(List<Integer> ids);
+
+
+    Emp selectAllInfoById(Integer id);
+
+    void update(Emp emp);
 }
