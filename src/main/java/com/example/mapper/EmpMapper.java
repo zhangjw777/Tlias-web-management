@@ -3,9 +3,8 @@ package com.example.mapper;
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Options;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -25,4 +24,7 @@ public interface EmpMapper {
 
 
     List<Emp> selectPage(EmpQueryParam empQueryParam);
+
+    @Options(useGeneratedKeys = true, keyProperty = "id") //主键返回，在插入后会将数据库主键自增的的值返回给Emp实体类
+    void insert(Emp emp);
 }
