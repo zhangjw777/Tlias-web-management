@@ -65,6 +65,19 @@
                 #{deptId}, #{createTime}, #{updateTime})
 
     </insert>
+    <!-- 统计各个职位的员工人数 -->
+    <select id="countEmpJobData" resultType="java.util.Map">
+        select
+            (case job when 1 then '班主任'
+                      when 2 then '讲师'
+                      when 3 then '学工主管'
+                      when 4 then '教研主管'
+                      when 5 then '咨询师'
+                      else '其他' end) as job,
+            count(*) total
+        from emp group by job
+        order by total
+    </select>
     <resultMap id="empResultMap" type="com.example.pojo.Emp">
         <id column="id" property="id" />
         <result column="username" property="username" />

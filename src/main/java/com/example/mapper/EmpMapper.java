@@ -2,11 +2,13 @@ package com.example.mapper;
 
 import com.example.pojo.Emp;
 import com.example.pojo.EmpQueryParam;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface EmpMapper {
@@ -35,4 +37,7 @@ public interface EmpMapper {
     Emp selectAllInfoById(Integer id);
 
     void update(Emp emp);
+
+    @MapKey("job")
+    List<Map<String,Integer>> countEmpJobData();
 }
